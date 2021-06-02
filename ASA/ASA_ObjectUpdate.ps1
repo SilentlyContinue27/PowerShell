@@ -1,7 +1,7 @@
  
 #################################################################################################
 #################################################################################################
-# Update Trafic Manager IP Addresses in the ASA   -  V 0.5
+# Update Trafic Manager IP Addresses in the ASA   -  V 0.5.1
 # 4/15/2021 - SilentlyContinue TJE
 # Requirements: Powershell 5+, .Net 4+, Posh-SSH module, NuGet, elevated PS console                                        
 #################################################################################################
@@ -195,10 +195,10 @@ $CompareParams = @{
 }
 $Comparison = Compare-Object @CompareParams
 
-$ChangesToMake? = ( $Comparison.sideindicator -contains "<=" ) -or 
+$ChangesToMake = ( $Comparison.sideindicator -contains "<=" ) -or 
 ( $Comparison.sideindicator -contains "=>" )
 
-if ( $ChangesToMake? ) {
+if ( $ChangesToMake ) {
     $Commands = "config terminal
         object-group network $NetworkGroup
         "
