@@ -24,7 +24,7 @@ $PathToCSV = "C:\Power\PWNotSetInDays$days.csv"
 $csv = Import-Csv -Path $PathToCSV #CHECK $Date/$PathToCSV SET CORRECTLY ABOVE!!!
 $TodaysDate = Get-Date -Format MM/dd/yyyy
 ForEach ($account in $csv) { 
-    $UserUPN = $($account.SamAccountName + "@skagit.edu")
+    $UserUPN = $($account.SamAccountName + "@dom.edu")
     $user = Get-ADUser -Filter { userprincipalname -like $UserUPN } -Properties Description
     $SecurePass = $((([char[]]([char]33..[char]95) + ([char[]]([char]97..[char]126)) + 0..12 | 
                 Sort-Object { Get-Random })[0..12] -join '') | ConvertTo-SecureString -AsPlainText -Force)
